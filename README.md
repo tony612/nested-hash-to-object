@@ -16,10 +16,15 @@ $ irb
 > p o_h.d.e   # => "bar"
 ```
 
-And `o_h.a.b` is an object of ObjectableHash in fact, you can get the hash value via `o_h.a.b.val`.
+In fact `o_h.a.b` is an object of ObjectableHash, so you can get the hash value via `o_h.a.b.val`.
 
 And I have added `Forwardable` module to it to let it work as an hash:
 
 ```
 > p h[:a][:b][:c] # => "foo"
 ```
+
+## TODO
+
+Add the support for Array inside the hash
+Add support for more methods of hash
