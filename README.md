@@ -26,5 +26,6 @@ And I have added `Forwardable` module to it to let it work as an hash:
 
 ## TODO
 
+Add test
 Add the support for Array inside the hash
 Add support for more methods of hash
