@@ -7,7 +7,7 @@ class ObjectableHash
   end
 
   def method_missing(m, *args, &block)
-    (v = @h.fetch( m )).is_a?(Hash) ? Foo.new(v) : v
+    (v = @h.fetch( m )).is_a?(Hash) ? ObjectableHash.new(v) : v
   end
 
   def to_s
