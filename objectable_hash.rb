@@ -8,7 +8,11 @@ class ObjectableHash
   end
 
   def method_missing(m, *args, &block)
-    (v = @h.fetch( m )).is_a?(Hash) ? ObjectableHash.new(v) : v
+    if (v = @obj.fetch(m)).is_a?(Hash) or v.is_a?(Array)
+      ObjectableHash.new(v)
+    else
+      v
+    end
   end
 
   def to_s
