@@ -69,9 +69,24 @@ describe ObjectableHash do
   end
 
   describe "#[]" do
-    it "behaves like the inner hash" do
-      @objectable_hash[:a].must_equal({b: "foo", c: 10})
-      @objectable_hash[:a][:b].must_equal "foo"
+    describe "when the the inner obj is a hash" do
+      it "return the ObjectableHash for the object" do
+        @objectable_hash[:a].must_equal ObjectableHash.new({b: "foo", c: 10, d: [{e: "bar"}, {f: 20}, "baz"]})
+      end
+    end
+
+    describe "when the inner obj is a array" do
+      it "returns the ObjectableHash for the object" do
+        @objectable_hash.a.d[0].must_equal ObjectableHash.new({e: "bar"})
+        @objectable_hash.a.d[1].must_equal ObjectableHash.new({f: 20})
+        @objectable_hash.a.d[2].must_equal "baz"
+      end
+    end
+
+    describe "when the inner obj is neither a array nor a hash" do
+      it "returns the real obj" do
+        @objectable_hash[:a][:b].must_equal "foo"
+      end
     end
   end
 end
