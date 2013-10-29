@@ -7,16 +7,22 @@ describe ObjectableHash do
   end
 
   describe "#method_missing" do
+    describe "when the last is hash" do
+      it "should return the ObjectableHash object using the hash" do
+        @objectable_hash.a.must_equal ObjectableHash.new({b: "foo", c: 10, d: [{e: "bar"}, {f: 20}, "baz"]})
+      end
+    end
+
+    describe "when a attr is an Array" do
+      it "should return the ObjectableHash object using the array" do
+        @objectable_hash.a.d.must_equal ObjectableHash.new([{e: "bar"}, {f: 20}, "baz"])
+      end
+    end
+
     describe "when the last is string or number" do
       it "should return the itself" do
         @objectable_hash.a.b.must_equal "foo"
         @objectable_hash.a.c.must_equal 10
-      end
-    end
-
-    describe "when the last is hash" do
-      it "should return the ObjectableHash object using the hash" do
-        @objectable_hash.a.must_equal ObjectableHash.new({b: "foo", c: 10})
       end
     end
   end
