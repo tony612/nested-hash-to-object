@@ -28,9 +28,10 @@ describe ObjectableHash do
   end
 
   describe "#val" do
-    describe "when the last is a Objectable hash" do
-      it "should return the Hash type value" do
-        @objectable_hash.a.val.must_equal({b: "foo", c: 10})
+    describe "when the object is a Objectable hash" do
+      it "should return the real object" do
+        @objectable_hash.a.val.must_equal({b: "foo", c: 10, d: [{e: "bar"}, {f: 20}, "baz"]})
+        @objectable_hash.a.d.val.must_equal([{e: "bar"}, {f: 20}, "baz"])
       end
     end
   end
