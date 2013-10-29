@@ -51,7 +51,7 @@ describe ObjectableHash do
 
     describe "when other is an instance of the Class" do
       it "return true when the #val is equal" do
-        @objectable_hash.must_be :==, ObjectableHash.new({a: {b: "foo", c: 10}})
+        @objectable_hash.must_be :==, ObjectableHash.new({a: {b: "foo", c: 10, d: [{e: "bar"}, {f: 20}, "baz"]}})
       end
 
       it "return false when the #val is not equal" do
