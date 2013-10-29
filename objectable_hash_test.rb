@@ -3,7 +3,7 @@ require "./objectable_hash.rb"
 
 describe ObjectableHash do
   before do
-    @objectable_hash = ObjectableHash.new({a: {b: "foo", c: 10}})
+    @objectable_hash = ObjectableHash.new({a: {b: "foo", c: 10, d: [{e: "bar"}, {f: 20}, "baz"]}})
   end
 
   describe "#method_missing" do
