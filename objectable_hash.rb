@@ -1,10 +1,10 @@
 require 'forwardable'
 class ObjectableHash
   extend Forwardable
-  def_delegators :@h, :[]
+  def_delegators :@obj, :[]
 
-  def initialize( h )
-    @h = h
+  def initialize( obj )
+    @obj = obj
   end
 
   def method_missing(m, *args, &block)
@@ -12,11 +12,11 @@ class ObjectableHash
   end
 
   def to_s
-    @h.to_s
+    @obj.to_s
   end
 
   def val
-    @h
+    @obj
   end
 
   def ==(other)
