@@ -62,8 +62,9 @@ describe ObjectableHash do
 
   describe "#to_s" do
     it "return the inner hash object's value" do
-      @objectable_hash.to_s.must_equal("{:a=>{:b=>\"foo\", :c=>10}}")
-      @objectable_hash.a.to_s.must_equal("{:b=>\"foo\", :c=>10}")
+      @objectable_hash.to_s.must_equal("{:a=>{:b=>\"foo\", :c=>10, :d=>[{:e=>\"bar\"}, {:f=>20}, \"baz\"]}}")
+      @objectable_hash.a.to_s.must_equal("{:b=>\"foo\", :c=>10, :d=>[{:e=>\"bar\"}, {:f=>20}, \"baz\"]}")
+      @objectable_hash.a.d.to_s.must_equal("[{:e=>\"bar\"}, {:f=>20}, \"baz\"]")
     end
   end
 
